@@ -6,7 +6,6 @@ const Octokit = require('@octokit/rest')
 class CommentIfOutsideOf {
 
   constructor(payload) {
-
   }
 
 }
