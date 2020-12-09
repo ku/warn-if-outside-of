@@ -6,20 +6,7 @@ const { Octokit } = require("@octokit/rest")
 class CommentIfOutsideOf {
 
   constructor(payload) {
-    this.context = JSON.stringify(payload)
-    this.octokit = new Octokit({
-      auth: `token ${process.env.GITHUB_TOKEN}`
-    })
-  }
-
-  async main() {
-
-    const r = await this.octokit.pulls.get({
-      owner: this.context.repository.owner.login,
-      repo: this.context.repository.name,
-      pull_number: this.context.pull_request.number,
-    });
-    this.context = JSON.parse(payload)
+    this.payload = JSON.stringify(payload)
     this.octokit = new Octokit({
       auth: `token ${process.env.GITHUB_TOKEN}`
     })
@@ -27,9 +14,9 @@ class CommentIfOutsideOf {
 
   async listFiles() {
     return this.octokit.pulls.listFiles({
-      owner: this.context.repository.owner.login,
-      repo: this.context.repository.name,
-      pull_number: this.context.pull_request.number,
+      owner: this.payload.repository.owner.login,
+      repo: this.payload.repository.name,
+      pull_number: this.payload.pull_request.number,
     });
   }
 
