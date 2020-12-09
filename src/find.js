@@ -17,7 +17,7 @@ class CommentIfOutsideOf {
     });
   }
 
-  async execute(formater) {
+  async execute(formatter) {
     const response = await this.listFiles()
     const filenames = response.data.map( (f) => f.filename )
     const names = this.findFilesShouldNotBeContained(filenames)
