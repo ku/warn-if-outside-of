@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Get assignee from github payload
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_API_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_HEAD_REF: ${{ github.head_ref }}
         id: get-assignee
         uses: ku/whistle@master
