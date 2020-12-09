@@ -7,17 +7,14 @@ class CommentIfOutsideOf {
 
   constructor(payload) {
     this.context = JSON.stringify(payload)
-
-
-
   }
 
   async main() {
 
     const r = await octokit.pulls.get({
-      this.context.repository.owner.login,
-      this.context.repository.name,
-      this.context.pull_request.number,
+      owner: this.context.repository.owner.login,
+      repo: this.context.repository.name,
+      pull_number: this.context.pull_request.number,
     });
 
     console.log(JSON.stringify(r, null, '  '))
