@@ -6,8 +6,6 @@ const { Octokit } = require("@octokit/rest")
 const CommentIfOutsideOf = require('./find.js')
 
 try {
-    console.log(JSON.stringify(github.context, null, '  '))
-
   const env = JSON.stringify(process.env.GITHUB_TOKEN, null, '  ')
   console.log(`token ${process.env.GITHUB_TOKEN}`)
 
