@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: dump
-        run: node src/hello.js
+        run: find .
