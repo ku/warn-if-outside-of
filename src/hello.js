@@ -41,7 +41,7 @@ class CommentIfOutsideOf {
 }
 
 try {
-  console.log(JSON.stringify( github.event.inputs, null, '  ' ))
+  console.log(JSON.stringify( github, null, '  ' ))
 
   const env = JSON.stringify(process.env.GITHUB_TOKEN, null, '  ')
   console.log(`token ${process.env.GITHUB_TOKEN}`)
