@@ -1,10 +1,12 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  if-contains:
+    description: 'If the change set contains this pattern'
     required: true
-    default: 'World'
+  should-not-contain:
+    description: 'Warn if the change set contains a file which matches this pattern'
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
