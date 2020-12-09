@@ -17,7 +17,7 @@ try {
 
   const payload = github.context.payload
   const app = new CommentIfOutsideOf(octokit, payload, {
-    ifContians: core.getInput('if_contains'),
+    ifContains: core.getInput('if_contains'),
     warns: core.getInput('warns'),
     except: core.getInput('except'),
   })
