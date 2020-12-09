@@ -10,6 +10,7 @@ inputs:
   except: 'Cartfile'
     description: 'Except thw files matches except pattern'
     required: false
+    default: ''
 outputs:
   time: # id of output
     description: 'The time we greeted you'
