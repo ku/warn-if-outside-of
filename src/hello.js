@@ -13,6 +13,7 @@ class CommentIfOutsideOf {
   }
 
   async listFiles() {
+    console.log(JSON.stringify(this.payload, null, '  '))
     return this.octokit.pulls.listFiles({
       owner: this.payload.repository.owner.login,
       repo: this.payload.repository.name,
