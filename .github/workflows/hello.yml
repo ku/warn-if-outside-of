@@ -14,7 +14,5 @@ jobs:
         uses: ku/whistle@master
         with:
           if_contains: 'src/'
-          warns:
-            - '!src/'
-          except:
-            - 'Cartfile'
+          warns: '!src/'
+          except: 'Cartfile'
