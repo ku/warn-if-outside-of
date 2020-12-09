@@ -1,4 +1,4 @@
-name: hello
+name: warn-if-outside-of
 on:
   pull_request:
     paths:
@@ -7,7 +7,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Get assignee from github payload
+      - name: Warn if outside of
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_HEAD_REF: ${{ github.head_ref }}
@@ -16,4 +16,4 @@ jobs:
         with:
           if_contains: 'src/'
           warns: '!src/'
-          except: 'Cartfile'
+          except: 'README.md'

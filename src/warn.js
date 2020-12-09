@@ -1,12 +1,10 @@
 
-class WarnIfOutsideOf {
+module.exports = class WarnIfOutsideOf {
 
   constructor(octokit, payload, options) {
     this.payload = (payload)
     this.options = options
     this.octokit = octokit
-
-    console.log(`options: ` + JSON.stringify(options, null, 2))
   }
 
   async listFiles() {
@@ -60,24 +58,31 @@ class WarnIfOutsideOf {
 
 class PatternMatcher {
   constructor(patternString) {
-    if (patternString[0] === '!') {
-      patternString = patternString.substring(1)
-      this.negate = true
-    } else {
-      this.negate = false
-    }
-    this.re = new RegExp(patternString)
+    const patterns = patternString.split(',')
+
+    this.rules = patterns.map( pattern => {
+      let negate = false
+      if (pattern[0] === '!') {
+        pattern = patternString.substring(1)
+        negate = true
+      }
+
+      return {
+        re: new RegExp(pattern.trim()),
+        negate
+      }
+    })
   }
 
   test(subject) {
-    const m = this.re.test(subject)
-    console.log(this.re, subject, m)
-    if (this.negate) {
-      return !m
-    } else {
-      return m
-    }
+    return this.rules.some( rule => {
+      const matched = rule.re.test(subject)
+      if (rule.negate) {
+        return !matched
+      } else {
+        return matched
+      }
+    })
   }
 }
 
-module.exports = CommentIfOutsideOf
