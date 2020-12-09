@@ -1,6 +1,5 @@
 
 module.exports = class WarnIfOutsideOf {
-
   constructor(octokit, payload, options) {
     this.payload = (payload)
     this.options = options

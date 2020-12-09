@@ -1,14 +1,14 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'warn if outside of'
+description: 'Comment a notice if the change set contains a file which is not supposed to be changed'
 inputs:
   if_contains:
-    description: 'If the change set contains "if_contains" pattern'
+    description: 'If the change set contains "if_contains" regex'
     required: true
   warns:
-    description: 'Warn if the change set contains a file which matches "warns" pattern'
+    description: 'Warn if the change set contains a file which matches "warns" regex. Can have multiple regex separated by ",".'
     required: true
   except:
-    description: 'Except thw files matches except pattern'
+    description: 'Except thw files matches except regex. Can have multiple regex separated by ",".'
     required: false
     default: ''
 outputs:
