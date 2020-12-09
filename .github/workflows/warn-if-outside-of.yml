@@ -1,0 +1,19 @@
+name: warn-if-outside-of
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Warn if outside of
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+        id: get-assignee
+        uses: ku/whistle@master
+        with:
+          if_contains: 'src/'
+          warns: '!src/'
+          except: 'README.md'
