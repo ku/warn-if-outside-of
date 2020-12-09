@@ -1,5 +1,5 @@
 
-class CommentIfOutsideOf {
+class WarnIfOutsideOf {
 
   constructor(octokit, payload, options) {
     this.payload = (payload)
