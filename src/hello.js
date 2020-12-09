@@ -7,6 +7,7 @@ class CommentIfOutsideOf {
 
   constructor(payload, options) {
     this.payload = (payload)
+    this.options = options
     this.octokit = new Octokit({
       auth: `token ${process.env.GITHUB_TOKEN}`
     })
