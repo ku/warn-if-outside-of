@@ -12,11 +12,11 @@ class CommentIfOutsideOf {
 }
 
 try {
+  const env = JSON.stringify(process.env.GITHUB_TOKEN, null, '  ')
+  console.log(`token ${process.env.GITHUB_TOKEN}`)
+
   const payload = JSON.stringify(github.context.payload, null, '  ')
   console.log(`The event payload: ${payload}`);
-
-  const env = JSON.stringify(process.env, null, '  ')
-  console.log(env)
 
   const octokit = new Octokit({
     auth: `token ${process.env.GITHUB_TOKEN}`
