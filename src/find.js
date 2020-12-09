@@ -70,6 +70,7 @@ class PatternMatcher {
 
   test(subject) {
     const m = this.re.test(subject)
+    console.log(this.re, subject, m)
     if (this.negate) {
       return !m
     } else {
