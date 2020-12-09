@@ -6,7 +6,7 @@ const { Octokit } = require("@octokit/rest")
 class CommentIfOutsideOf {
 
   constructor(payload) {
-    this.payload = JSON.stringify(payload)
+    this.payload = JSON.parse(payload)
     this.octokit = new Octokit({
       auth: `token ${process.env.GITHUB_TOKEN}`
     })
@@ -28,7 +28,6 @@ class CommentIfOutsideOf {
 }
 
 try {
-  console.log(JSON.stringify( github, null, '  ' ))
 
   const env = JSON.stringify(process.env.GITHUB_TOKEN, null, '  ')
   console.log(`token ${process.env.GITHUB_TOKEN}`)
