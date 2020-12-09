@@ -20,13 +20,8 @@ try {
     except: core.getInput('except'),
   })
   app.execute( (files) => {
-    const body = `⚠️  unexpected changes outside of \`${ core.getInput('if_contains')  }\` are detected. Please make sure followings changes don't affect on existing behaviors.\n`
-
-    files.forEach( (file) => {
-      body += `- [ ] ${file}\n`
-    })
-
-    return body
+    const preamble = `⚠️  unexpected changes outside of \`${ core.getInput('if_contains')  }\` are detected. Please make sure followings changes don't affect on existing behaviors.\n`
+    return preamble + files.map( file => `- [ ] ${file}\n` )
   })
 } catch (error) {
   core.setFailed(error.message);
