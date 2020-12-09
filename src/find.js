@@ -15,15 +15,14 @@ class CommentIfOutsideOf {
     });
   }
 
-  async execute() {
+  async execute(formater) {
     const response = await this.listFiles()
     const filenames = response.data.map( (f) => f.filename )
     const names = this.findFilesShouldNotBeContained(filenames)
 
     if (names.length > 0) {
       console.log(JSON.stringify(names, null, '  '))
-      const body = 'hello ' + JSON.stringify(names, null, '  ')
-
+      body = formatter(names)
       this.octokit.issues.createComment({
         owner: this.payload.repository.owner.login,
         repo: this.payload.repository.name,

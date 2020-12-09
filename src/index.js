@@ -21,7 +21,15 @@ try {
     warns: core.getInput('warns'),
     except: core.getInput('except'),
   })
-  app.execute()
+  app.execute( (files) => {
+    const body = `⚠️  non-MerpatLendingKit changes are detected. Please make sure followings changes don't affect on existing behaviors.\n`
+
+    files.forEach( (file) => {
+      body += `- [ ] ${file}\n`
+    })
+
+    return body
+  })
 } catch (error) {
   core.setFailed(error.message);
 }
