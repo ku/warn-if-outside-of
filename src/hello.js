@@ -5,8 +5,8 @@ const { Octokit } = require("@octokit/rest")
 
 class CommentIfOutsideOf {
 
-  constructor(payload) {
-    this.payload = JSON.stringify(payload)
+  constructor(payload, options) {
+    this.payload = (payload)
     this.octokit = new Octokit({
       auth: `token ${process.env.GITHUB_TOKEN}`
     })
@@ -23,12 +23,37 @@ class CommentIfOutsideOf {
   async main() {
     const response = await this.listFiles()
     const filenames = response.data.map( (f) => f.filename )
-    console.log(JSON.stringify(filenames, null, '  '))
+    const names = findFilesShouldNotBeContained(filenames)
+
+    console.log(JSON.stringify(names, null, '  '))
+  }
+
+  findFilesShouldNotBeContained(filenames) {
+    let detectedFiles = []
+
+    if (this.ifContains(filenames)) {
+      const patternShouldNotBeContained = new RegExp(this.options.warns)
+      const patternException = new RegExp(this.options.except)
+
+      for (name of filenames) {
+        if (patternShouldNotBeContained.test(name)) {
+          if (!patternException.test(name)) {
+            detectedFiles.push(name)
+          }
+        }
+      }
+    }
+
+    return detectedFiles
+  }
+
+  ifContains(filenames) {
+    const re = new RegExp(this.options.ifContains)
+    return filenames.some( name => re.test(name) )
   }
 }
 
 try {
-  console.log(JSON.stringify( github, null, '  ' ))
 
   const env = JSON.stringify(process.env.GITHUB_TOKEN, null, '  ')
   console.log(`token ${process.env.GITHUB_TOKEN}`)
@@ -46,7 +71,11 @@ try {
   }
 
 
-  const app = new CommentIfOutsideOf(payload)
+  const app = new CommentIfOutsideOf(payload, {
+    ifContians: core.getInput('if_contains'),
+    warns: core.getInput('warns'),
+    except: core.getInput('except'),
+  })
   app.main()
 
   core.setOutput("assignee", 'x');
