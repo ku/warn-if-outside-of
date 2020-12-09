@@ -5,6 +5,8 @@ class CommentIfOutsideOf {
     this.payload = (payload)
     this.options = options
     this.octokit = octokit
+
+    console.log(`options: ` + JSON.stringify(options, null, 2))
   }
 
   async listFiles() {
