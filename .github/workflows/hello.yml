@@ -6,8 +6,8 @@ on:
       - labeled
 
 jobs:
-  build:
-    runs-on: ubuntu-16.04
+  check:
+    runs-on: ubuntu-latest
     steps:
       - name: dump
         run: node src/hello.js
