@@ -1,9 +1,9 @@
 name: hello
 
 on:
-  pull_request:
-    types:
-      - labeled
+  push:
+    paths:
+      - 'src/**'
 
 jobs:
   check:
