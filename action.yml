@@ -7,7 +7,7 @@ inputs:
   warns:
     description: 'Warn if the change set contains a file which matches "warns" pattern'
     required: true
-  excludes: 'Cartfile'
+  except:
     description: 'Except thw files matches except pattern'
     required: false
     default: ''
