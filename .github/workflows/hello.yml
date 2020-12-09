@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Get assignee from github payload
         id: get-assignee
-        uses: ku/whistle
+        uses: ku/whistle@master
