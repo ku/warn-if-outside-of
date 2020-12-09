@@ -16,4 +16,4 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'node12'
-  main: 'src/hello.js'
+  main: 'src/index.js'
