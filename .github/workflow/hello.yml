@@ -1,4 +1,4 @@
-name: whistleblower
+name: hello
 
 on:
   pull_request:
