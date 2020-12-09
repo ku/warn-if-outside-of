@@ -1,10 +1,10 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  if-contains:
+  if_contains:
     description: 'If the change set contains this pattern'
     required: true
-  should-not-contain:
+  should_not_contain:
     description: 'Warn if the change set contains a file which matches this pattern'
     required: true
 outputs:
