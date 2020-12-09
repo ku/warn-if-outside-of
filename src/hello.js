@@ -35,7 +35,7 @@ class CommentIfOutsideOf {
       const patternShouldNotBeContained = new RegExp(this.options.warns)
       const patternException = new RegExp(this.options.except)
 
-      for (name of filenames) {
+      for (const name of filenames) {
         if (patternShouldNotBeContained.test(name)) {
           if (!patternException.test(name)) {
             detectedFiles.push(name)
