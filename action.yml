@@ -2,11 +2,14 @@ name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
   if_contains:
-    description: 'If the change set contains this pattern'
+    description: 'If the change set contains "if_contains" pattern'
     required: true
-  should_not_contain:
-    description: 'Warn if the change set contains a file which matches this pattern'
+  warns:
+    description: 'Warn if the change set contains a file which matches "warns" pattern'
     required: true
+  except: 'Cartfile'
+    description: 'Except thw files matches except pattern'
+    required: false
 outputs:
   time: # id of output
     description: 'The time we greeted you'
