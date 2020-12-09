@@ -27,7 +27,7 @@ class CommentIfOutsideOf {
       this.octokit.issues.createComment({
         owner: this.payload.repository.owner.login,
         repo: this.payload.repository.name,
-        pull_number: this.payload.pull_request.number,
+        issue_number: this.payload.pull_request.number,
         body,
       });
     }
