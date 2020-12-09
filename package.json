@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "main": "src/hello.js",
+  "main": "src/main.js",
   "dependencies": {
     "@actions/core": "^1.2.2",
     "@actions/github": "^2.1.1"
