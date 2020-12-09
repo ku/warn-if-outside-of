@@ -23,7 +23,7 @@ class CommentIfOutsideOf {
   async main() {
     const response = await this.listFiles()
     const filenames = response.data.map( (f) => f.filename )
-    const names = findFilesShouldNotBeContained(filenames)
+    const names = this.findFilesShouldNotBeContained(filenames)
 
     console.log(JSON.stringify(names, null, '  '))
   }
