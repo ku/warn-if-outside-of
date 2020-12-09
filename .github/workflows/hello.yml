@@ -11,3 +11,5 @@ jobs:
     steps:
       - name: dump
         run: find ../..
+        using: 'node12'
+        main: 'src/hello.js'
