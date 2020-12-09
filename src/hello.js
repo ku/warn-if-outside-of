@@ -7,11 +7,14 @@ class CommentIfOutsideOf {
 
   constructor(payload) {
     this.context = JSON.stringify(payload)
+    this.octokit = new Octokit({
+      auth: `token ${process.env.GITHUB_TOKEN}`
+    })
   }
 
   async main() {
 
-    const r = await octokit.pulls.get({
+    const r = await this.octokit.pulls.get({
       owner: this.context.repository.owner.login,
       repo: this.context.repository.name,
       pull_number: this.context.pull_request.number,
@@ -27,9 +30,6 @@ try {
   console.log(`token ${process.env.GITHUB_TOKEN}`)
 
 
-  const octokit = new Octokit({
-    auth: `token ${process.env.GITHUB_TOKEN}`
-  })
 
 //  const payload = JSON.stringify(github.context.payload, null, '  ')
 //  console.log(`The event payload: ${payload}`);
