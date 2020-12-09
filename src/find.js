@@ -21,7 +21,6 @@ class CommentIfOutsideOf {
     const names = this.findFilesShouldNotBeContained(filenames)
 
     if (names.length > 0) {
-      console.log(JSON.stringify(names, null, '  '))
       body = formatter(names)
       this.octokit.issues.createComment({
         owner: this.payload.repository.owner.login,

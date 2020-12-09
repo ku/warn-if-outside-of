@@ -22,7 +22,7 @@ try {
     except: core.getInput('except'),
   })
   app.execute( (files) => {
-    const body = `⚠️  non-MerpatLendingKit changes are detected. Please make sure followings changes don't affect on existing behaviors.\n`
+    const body = `⚠️  unexpected changes outside of \`${ core.getInput('if_contains')  }\` are detected. Please make sure followings changes don't affect on existing behaviors.\n`
 
     files.forEach( (file) => {
       body += `- [ ] ${file}\n`
