@@ -9,8 +9,5 @@ jobs:
   build:
     runs-on: ubuntu-16.04
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-go@v1
-    with:
-      go-version: '^1.13.1'
-    - run: go run src/hello.go
+      - name: dump
+        run: node src/hello.js
