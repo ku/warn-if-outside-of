@@ -15,4 +15,4 @@ jobs:
         with:
           if_contains: 'src/'
           warns: '!src/'
-          except: 'Cartfile'
+          excludes: 'Cartfile'
