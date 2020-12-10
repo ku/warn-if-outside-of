@@ -17,7 +17,7 @@ try {
   })
   app.execute( (files) => {
     const preamble = `⚠️  unexpected changes outside of \`${ core.getInput('if_contains')  }\` are detected. Please make sure followings changes don't affect on existing behaviors.\n`
-    return preamble + files.map( file => `- [ ] ${file}\n` )
+    return preamble + files.map( file => `- [ ] ${file}` ).join("\n")
   })
 } catch (error) {
   core.setFailed(error.message);
